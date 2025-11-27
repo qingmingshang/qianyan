@@ -1,0 +1,967 @@
+/* --- 颜色变量 (方便修改主题色) --- */
+:root {
+    --primary-color: #3498db;  /* 主题蓝 */
+    --secondary-color: #e74c3c; /* 强调红 */
+    --dark-color: #2c3e50;      /* 深色 */
+    --light-bg: #f4f6f9;        /* 浅背景色 */
+    --accent-color: #9b59b6;    /* 辅助紫 */
+    --success-color: #2ecc71;   /* 成功绿 */
+}
+
+/* 基础重置和字体 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.8; 
+    color: #333;
+    background-color: #fff;
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4 {
+    color: var(--dark-color);
+    line-height: 1.3;
+    font-weight: 600;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+/* --- 导航栏 --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background-color: var(--dark-color);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.logo-img {
+    height: 30px; /* 控制 Logo 图片高度 */
+    width: auto;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.navbar nav a {
+    color: white;
+    margin-left: 25px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.navbar nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.navbar nav a:hover {
+    background-color: rgba(52, 152, 219, 0.2);
+}
+
+.navbar nav a:hover::after {
+    width: 100%;
+}
+
+/* --- 主要内容区 --- */
+.content-section {
+    padding: 80px 10%;
+    position: relative;
+}
+
+.content-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    border-radius: 2px;
+}
+
+.content-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    border-bottom: 3px solid var(--primary-color);
+    display: inline-block;
+    padding-bottom: 5px;
+    text-align: center; 
+    width: auto;
+    position: relative;
+}
+
+.content-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    right: 0;
+    width: 30%;
+    height: 3px;
+    background-color: var(--accent-color);
+}
+
+.light-bg {
+    background-color: var(--light-bg);
+    background-image: radial-gradient(rgba(52, 152, 219, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.text-left {
+    text-align: left;
+}
+
+/* --- 主视觉区 (Hero) --- */
+.hero-section {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #2980b9 100%);
+    color: white;
+    padding: 150px 10%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%233498db" opacity="0.1"/><circle cx="50" cy="50" r="40" fill="none" stroke="%23ffffff" stroke-width="1" opacity="0.2"/></svg>');
+    background-size: 100px;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-section h1 {
+    font-size: 3.8em;
+    margin-bottom: 15px;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    animation: fadeInDown 1s ease;
+}
+
+.slogan {
+    font-size: 1.4em;
+    margin-bottom: 5px;
+    animation: fadeInUp 1s ease 0.3s both;
+}
+
+.motto {
+    font-size: 1.1em;
+    font-weight: 300;
+    margin-bottom: 30px;
+    animation: fadeInUp 1s ease 0.5s both;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    animation: fadeInUp 1s ease 0.7s both;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.cta-button:hover {
+    background-color: #c0392b;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.cta-button:hover::after {
+    left: 100%;
+}
+
+/* --- 核心口号区 --- */
+.motto-section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    text-align: center;
+    background-color: white;
+}
+
+.motto-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.motto-item {
+    background-color: var(--dark-color);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-size: 1.2em;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.motto-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(52, 152, 219, 0.2), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.motto-item:hover {
+    transform: translateY(-5px) scale(1.05);
+    background-color: var(--primary-color);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.motto-item:hover::before {
+    opacity: 1;
+}
+
+.join-us-text {
+    font-size: 1.3em;
+    color: var(--secondary-color);
+    font-weight: 500;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* --- 简介/理念卡片 --- */
+.intro-block, .philosophy-block, .tech-overview, .direction-list, .ai-advantage, .award-block, .project-block {
+    margin-bottom: 50px;
+    padding: 30px;
+    border-left: 4px solid var(--primary-color);
+    background-color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border-radius: 0 10px 10px 0;
+    transition: all 0.3s ease;
+}
+
+.intro-block:hover, .philosophy-block:hover, .tech-overview:hover, .direction-list:hover, .ai-advantage:hover, .award-block:hover, .project-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.intro-block h3, .philosophy-block h3 {
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.intro-block h3::before, .philosophy-block h3::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 24px;
+    background-color: var(--accent-color);
+    border-radius: 4px;
+}
+
+.card-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.philosophy-card {
+    flex: 1;
+    padding: 25px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.philosophy-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+}
+
+.philosophy-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    transform: translateY(-5px);
+}
+
+.philosophy-card h4 {
+    color: var(--dark-color);
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+/* --- AI 优势列表 --- */
+.advantage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+}
+
+.advantage-grid li {
+    background-color: #e8f5ff;
+    padding: 20px;
+    border-radius: 10px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--primary-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.advantage-grid li::after {
+    content: '✓';
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: var(--success-color);
+    font-size: 1.2em;
+    opacity: 0.5;
+}
+
+.advantage-grid li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    background-color: #d4e9fc;
+    border-left-color: var(--accent-color);
+}
+
+/* --- 表格样式 (培养规划和荣誉) --- */
+.growth-table, .award-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.growth-table th, .award-table th, .growth-table td, .award-table td {
+    border: none;
+    padding: 15px;
+    text-align: left;
+}
+
+.growth-table th, .award-table th {
+    background: linear-gradient(90deg, var(--dark-color), #34495e);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 0.5px;
+}
+
+.growth-table tbody tr, .award-table tbody tr {
+    border-bottom: 1px solid #eee;
+    transition: all 0.2s ease;
+}
+
+.growth-table tbody tr:last-child, .award-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.growth-table tbody tr:nth-child(even), .award-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.growth-table tbody tr:hover, .award-table tbody tr:hover {
+    background-color: #f0f8ff;
+    transform: scale(1.01);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* --- 招新流程 --- */
+.recruit-steps {
+    margin-top: 20px;
+    padding-left: 30px;
+    counter-reset: step-counter;
+}
+
+.recruit-steps li {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    position: relative;
+    padding-left: 40px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #eee;
+    counter-increment: step-counter;
+}
+
+.recruit-steps li:last-child {
+    border-bottom: none;
+}
+
+.recruit-steps li::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* --- 项目卡片 --- */
+.project-card-grid {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.project-card {
+    background-color: white;
+    border: 1px solid #eee;
+    padding: 30px;
+    border-radius: 15px;
+    width: 45%;
+    min-width: 300px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    border-color: var(--primary-color);
+}
+
+.project-card h4 {
+    color: var(--dark-color);
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+.award-info {
+    color: var(--secondary-color);
+    font-weight: bold;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed #eee;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.award-info::before {
+    content: '🏆';
+    font-size: 1.2em;
+}
+
+.other-projects-title {
+    margin-top: 40px;
+    border-left: 5px solid var(--primary-color);
+    padding-left: 15px;
+    font-size: 1.4em;
+}
+
+.other-projects-list {
+    list-style: none;
+    padding-left: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
+}
+
+.other-projects-list li {
+    padding: 10px 15px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    position: relative;
+    padding-left: 30px;
+}
+
+.other-projects-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 10px;
+    color: var(--success-color);
+    font-weight: bold;
+}
+
+/* --- 核心成员介绍区 (Team Section) --- */
+.team-intro {
+    font-size: 1.1em;
+    margin-bottom: 40px;
+    color: #666;
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.member-grid-full {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px; 
+    margin-top: 30px;
+}
+
+.member-profile-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    width: 280px; 
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.member-profile-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+}
+
+.member-profile-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.member-title {
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 0.9em;
+    margin: 10px 0 15px 0;
+    padding: 5px 10px;
+    background-color: rgba(52, 152, 219, 0.1);
+    border-radius: 50px;
+    display: inline-block;
+}
+
+.member-quote {
+    font-style: italic;
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed #eee;
+}
+
+.placeholder-card {
+    background-color: #e8f5ff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px dashed var(--primary-color);
+}
+
+/* --- 全体成员列表样式 --- */
+.all-members-list {
+    margin-top: 60px; /* 与上方的核心成员卡片保持距离 */
+    padding-top: 40px;
+    border-top: 2px solid #eee;
+}
+
+.all-members-list h3 {
+    text-align: center;
+    font-size: 2em;
+    color: var(--dark-color);
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.all-members-list h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+.member-group-title {
+    font-size: 1.4em;
+    color: var(--primary-color);
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.member-group-title::before {
+    content: '👥';
+    font-size: 1.2em;
+}
+
+.member-list-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.member-list-table th, .member-list-table td {
+    border: none;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.member-list-table thead th {
+    background: linear-gradient(90deg, var(--dark-color), #34495e);
+    color: white;
+    font-weight: 600;
+}
+
+.member-list-table tbody tr {
+    border-bottom: 1px solid #eee;
+    transition: all 0.2s ease;
+}
+
+.member-list-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.member-list-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.member-list-table tbody tr:hover {
+    background-color: #f0f8ff;
+    transform: scale(1.005);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* 序号列居中 */
+.member-list-table td:first-child {
+    width: 60px;
+    text-align: center;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* --- 资源与联系 --- */
+.resources-grid {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.resource-card {
+    flex: 1;
+    min-width: 300px;
+    padding: 30px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.resource-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80px;
+    height: 80px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"><circle cx="40" cy="40" r="35" fill="none" stroke="%233498db" stroke-width="1" opacity="0.1"/></svg>');
+}
+
+.resource-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+.resource-card h3 {
+    color: var(--dark-color);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.resource-card h3::before {
+    content: '🌟';
+    font-size: 1.2em;
+}
+
+.alumni-list, .support-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.alumni-list li, .support-list li {
+    margin-bottom: 15px;
+    border-left: 3px solid var(--secondary-color);
+    padding-left: 15px;
+    transition: all 0.3s ease;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed #f0f0f0;
+}
+
+.alumni-list li:hover, .support-list li:hover {
+    padding-left: 20px;
+    border-left-color: var(--primary-color);
+    background-color: #f8f9fa;
+    padding-right: 10px;
+    border-radius: 5px;
+}
+
+.contact-info {
+    text-align: center;
+    padding: 40px;
+    border: 2px dashed var(--primary-color);
+    border-radius: 15px;
+    background-color: white;
+    transition: all 0.3s ease;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-info:hover {
+    background-color: #f8fbff;
+    border-color: var(--accent-color);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.contact-info h3 {
+    margin-bottom: 20px;
+    color: var(--dark-color);
+}
+
+.final-call {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--dark-color);
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px dashed #eee;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* --- 底部 --- */
+footer {
+    background: linear-gradient(135deg, var(--dark-color), #1a2530);
+    color: white;
+    text-align: center;
+    padding: 40px 0 20px;
+    font-size: 0.9em;
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color), var(--secondary-color));
+}
+
+footer p {
+    max-width: 800px;
+    margin: 0 auto 20px;
+    opacity: 0.8;
+}
+
+/* --- 动画效果 --- */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- 响应式调整 (让手机也能正常显示) --- */
+@media (max-width: 992px) {
+    .content-section {
+        padding: 60px 5%;
+    }
+    
+    .card-grid, .resources-grid {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .project-card {
+        width: 100%;
+        min-width: unset;
+    }
+    
+    .motto-grid {
+        gap: 15px;
+    }
+    
+    .motto-item {
+        margin-bottom: 10px;
+        padding: 10px 20px;
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 15px 20px;
+    }
+    
+    .navbar nav {
+        margin-top: 15px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .navbar nav a {
+        margin: 5px 10px;
+        font-size: 0.9em;
+    }
+    
+    .hero-section h1 {
+        font-size: 2.8em;
+    }
+    
+    .advantage-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .project-card-grid {
+        flex-direction: column;
+    }
+    
+    .member-profile-card {
+        width: 100%; /* 在极小屏幕上一列显示 */
+    }
+    
+    /* 允许表格在小屏幕上横向滚动 */
+    .all-members-list {
+        overflow-x: auto;
+    }
+    
+    .member-list-table {
+        min-width: 450px; /* 确保表格不会被过度压缩 */
+    }
+    
+    .content-section h2 {
+        font-size: 2em;
+    }
+    
+    .contact-info {
+        padding: 20px;
+    }
+    
+    .final-call {
+        font-size: 1.3em;
+    }
+}
